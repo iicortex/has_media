@@ -41,20 +41,23 @@ module HasMediaHelper
       opts.keys.include?(:context)
       raise "Must give object and context" 
     end
+
     klass = opts[:object].class.to_s.underscore
-    opts[:text]||= I18n.t('add_link', 
+    
+    opts[:text] ||= I18n.t(
+      'add_link', 
       :medium_label => I18n.t(opts[:context], :scope => [:activerecord, :attributes, klass]),
-      :scope => [:has_media, :form])
-    link_to_function opts[:text] do |page| 
-      page.insert_html :bottom, generate_uid(
-        :object => opts[:object], 
-        :context => opts[:context]
-      ), 
-      :partial => 'has_media/medium_field', 
-      :locals => {
-        :object => opts[:object], 
-        :context => opts[:context]
-      }
+      :scope => [:has_media, :form],
+      :default => "Add"
+    )
+
+    link_to_function(opts[:text], nil) do |page| 
+      page.insert_html(
+        :bottom, 
+        generate_uid(:object => opts[:object],:context => opts[:context]), 
+        :partial => 'has_media/medium_field', 
+        :locals => { :object => opts[:object], :context => opts[:context]}
+      )
     end 
   end
 
