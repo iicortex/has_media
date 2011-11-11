@@ -23,6 +23,7 @@ The generator will create :
 - migration for activerecord
 - initializer for HasMedia configuration
 - locales files
+- sample uploaders and models
 
 == Model and Uploaders
 

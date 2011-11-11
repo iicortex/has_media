@@ -8,10 +8,10 @@ module HasMedia
 
       def copy_initializer
         template "has_media.rb", "config/initializers/has_media.rb"
-        
+
         ["video", "image", "audio"].each do |asset|
           template "#{asset}.rb", "app/models/#{asset}.rb"
-          template "#{asset}.rb", "app/uploaders/#{asset}.rb"
+          template "#{asset}.rb", "app/uploaders/#{asset}_uploader.rb"
         end
       end
 
