@@ -43,7 +43,7 @@ module HasMediaHelper
     end
 
     klass = opts[:object].class.to_s.underscore
-    
+
     opts[:text] ||= I18n.t(
       'add_link', 
       :medium_label => I18n.t(opts[:context], :scope => [:activerecord, :attributes, klass]),
@@ -72,7 +72,7 @@ module HasMediaHelper
   # @return [String]
   #
   def remove_medium_link(opts)
-    opts[:text] ||= I18n.t('remove_link', :scope => [:has_media, :form])
+    opts[:text] ||= I18n.t('remove_link', :scope => [:has_media, :form], :default => "Remove")
     link_to opts[:text], medium_url(opts[:medium]), :remote => true, :method => :delete
   end
 
