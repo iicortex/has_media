@@ -3,3 +3,38 @@ Thanks for using HasMedia !
 
 Documentation available at http://github.com/klacointe/has_media
 ===============================================================================
+
+We've created a set of image, audio and video uploaders.
+
+If you won't use them, remove them from app/models and app/uploaders.
+
+===============================================================================
+
+USAGE:
+
+1) Tell your models you has media:
+
+class MyModelWithMedia < ActiveRecord::Base
+
+  has_one_medium  :image, :only => :image
+  has_many_media  :images, :only => :image
+
+  has_one_medium  :audio, :only => :audio
+  has_many_media  :audios, :only => :audio
+
+  has_one_medium  :image_no_encode, :only => :image, :encode => false
+
+  has_one_medium  :pdf, :encode => false
+
+end
+
+2) Tell your views you has media:
+
+<%= form_for(@model, :html => {:multipart => true}) do |f| %>
+  <%= has_media_field @model, :context %>
+  <%= f.submit %>
+<%- end %>
+
+3) Add Nested_Form javascript to your layout:
+
+<%= javascript_include_tag :defaults, "nested_form" %>

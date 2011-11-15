@@ -41,21 +41,25 @@ module HasMediaHelper
       opts.keys.include?(:context)
       raise "Must give object and context" 
     end
+
     klass = opts[:object].class.to_s.underscore
-    opts[:text]||= I18n.t('add_link', 
+
+    opts[:text] ||= I18n.t(
+      'add_link', 
       :medium_label => I18n.t(opts[:context], :scope => [:activerecord, :attributes, klass]),
-      :scope => [:has_media, :form])
-    link_to_function opts[:text] do |page| 
-      page.insert_html :bottom, generate_uid(
-        :object => opts[:object], 
-        :context => opts[:context]
-      ), 
-      :partial => 'has_media/medium_field', 
-      :locals => {
-        :object => opts[:object], 
-        :context => opts[:context]
-      }
-    end 
+      :scope => [:has_media, :form],
+      :default => "Add"
+    )
+
+    fields = ''
+    whole_form = form_for opts[:object] do |f|
+      fields = f.fields_for(opts[:context], opts[:object], :index => "new_#{opts[:context]}") do |builder|
+        render(:partial => "has_media/medium_field", :locals => {:object => opts[:object], :context => opts[:context] } )
+      end
+    end
+    link_to_function(opts[:text], "$('\##{klass}-#{opts[:context]}-#{opts[:object].id}').append('#{j(fields)}')")
+
+    # link_to_add opts[:text], opts[:context]
   end
 
   ##
@@ -69,7 +73,7 @@ module HasMediaHelper
   # @return [String]
   #
   def remove_medium_link(opts)
-    opts[:text] ||= I18n.t('remove_link', :scope => [:has_media, :form])
+    opts[:text] ||= I18n.t('remove_link', :scope => [:has_media, :form], :default => "Remove")
     link_to opts[:text], medium_url(opts[:medium]), :remote => true, :method => :delete
   end
 
@@ -87,5 +91,8 @@ module HasMediaHelper
       :context => context
     }
   end
+
+  # Change this into nested_forms + 
+  # http://st-on-it.blogspot.com/2008/10/writting-own-form-helper-for-rails.html
 
 end
