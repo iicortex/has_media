@@ -35,3 +35,6 @@ end
   <%= f.submit %>
 <%- end %>
 
+3) Add Nested_Form javascript to your layout:
+
+<%= javascript_include_tag :defaults, "nested_form" %>

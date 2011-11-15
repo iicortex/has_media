@@ -51,14 +51,15 @@ module HasMediaHelper
       :default => "Add"
     )
 
-    link_to_function(opts[:text], nil) do |page| 
-      page.insert_html(
-        :bottom, 
-        generate_uid(:object => opts[:object],:context => opts[:context]), 
-        :partial => 'has_media/medium_field', 
-        :locals => { :object => opts[:object], :context => opts[:context]}
-      )
-    end 
+    fields = ''
+    whole_form = form_for opts[:object] do |f|
+      fields = f.fields_for(opts[:context], opts[:object], :index => "new_#{opts[:context]}") do |builder|
+        render(:partial => "has_media/medium_field", :locals => {:object => opts[:object], :context => opts[:context] } )
+      end
+    end
+    link_to_function(opts[:text], "$('\##{klass}-#{opts[:context]}-#{opts[:object].id}').append('#{j(fields)}')")
+
+    # link_to_add opts[:text], opts[:context]
   end
 
   ##
@@ -90,5 +91,8 @@ module HasMediaHelper
       :context => context
     }
   end
+
+  # Change this into nested_forms + 
+  # http://st-on-it.blogspot.com/2008/10/writting-own-form-helper-for-rails.html
 
 end

@@ -176,11 +176,15 @@ Factory example using factory_girl :
   end
 
 == Todo
+
 - Doc for testing (ActionController::TestUploadedFile is now obsolete in rails 3), add HasMediaTestHelper with stub_temp_file method
 - Add controller and views examples with overload system (form fields, display, ...)
 - Generator for models and uploaders (Type in Image, Video, Audio, Pdf) : rails generate has_media_model Type Name
 - Document code
 - add example app on github
+- Migrate to Rails 3.1 and start to use nested_form gem
+   - http://lucapette.com/rails/multiple-files-upload-with-carrierwave-and-nested_form/
+   - https://github.com/ryanb/nested_form
 
 == Contributors
 

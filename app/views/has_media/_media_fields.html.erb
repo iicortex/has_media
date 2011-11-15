@@ -1,20 +1,23 @@
+<% multiple = object.send(context).is_a?(Array) %>
+
 <div id="<%= generate_uid(:object => object, :context => context) %>">
   <%= render :partial => 'has_media/media', :locals => {
     :object => object,
     :context => context,
+    :multiple => multiple,
     :readonly => false
   } %>
 
   <%= render :partial => 'has_media/medium_field', 
     :locals => {
       :object => object, 
-      :context => context
+      :context => context,
+      :multiple => multiple
   } %>
 
 </div>
-<%- if object.send(context).is_a?(Array) %>
-  <p>
-  <%= add_medium_link(:object => object, :context => context.to_s) %>
-  </p>
-<%- end %>
+
+<p>
+<%= add_medium_link(:object => object, :context => context) %>
+</p>
 
