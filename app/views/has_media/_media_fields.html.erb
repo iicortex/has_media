@@ -1,3 +1,4 @@
+<%- namespace, object = object if object.is_a?(Array) %>
 <% multiple = object.send(context).is_a?(Array) %>
 
 <div id="<%= generate_uid(:object => object, :context => context) %>">
@@ -18,6 +19,10 @@
 </div>
 
 <p>
-<%= add_medium_link(:object => object, :context => context) %>
+<% if namespace %>
+  <%= add_medium_link(:namespace => namespace, :object => object, :context => context) %>
+<% else %>
+  <%= add_medium_link(:object => object, :context => context) %>
+<% end %>
 </p>
 

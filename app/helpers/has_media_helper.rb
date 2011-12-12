@@ -52,7 +52,8 @@ module HasMediaHelper
     )
 
     fields = ''
-    whole_form = form_for opts[:object] do |f|
+    target_form = opts[:namespace] ? [opts[:namespace], opts[:object]] : opts[:object]
+    whole_form = form_for target_form do |f|
       fields = f.fields_for(opts[:context], opts[:object], :index => "new_#{opts[:context]}") do |builder|
         render(:partial => "has_media/medium_field", :locals => {:object => opts[:object], :context => opts[:context] } )
       end

@@ -206,7 +206,6 @@ module HasMedia
       @contexts[relation] << context
       return if @media_relation_set.include? self
       has_many :media, :through => :media_links, :dependent => :destroy
-
       @media_relation_set << self
     end
 
@@ -260,6 +259,7 @@ module HasMedia
     # @param [Hash]   options
     #
     def create_one_accessors(context, options)
+      
       define_method(context) do
         media.with_context(context.to_sym).first
       end
