@@ -80,16 +80,18 @@ module HasMediaHelper
 
   ##
   # Create a file field for a medium
-  #
-  # @param [Medium]   model, A medium object
-  # @param [String]   context, the context to link medium
+  # 
+  # @param [Medium]     model, A medium object
+  # @param [String]     context, the context to link medium
+  # @param [Formtastic] formtastic, A formtastic instance (optional)
   #
   # @return [String]
   #
-  def has_media_field(model, context)
+  def has_media_field(model, context, formtastic=nil)
     render :partial => "has_media/media_fields", :locals => {
       :object => model,
-      :context => context
+      :context => context,
+      :formtastic => formtastic
     }
   end
 
