@@ -12,21 +12,19 @@
   } %>
 
   <%= render :partial => 'has_media/medium_field', :locals => {
-    :object => object, 
+    :object => object,
     :context => context,
     :multiple => multiple,
     :formtastic => formtastic
   } %>
 
-</div>
-
-<p>
-<% if namespace %>
-  <%= add_medium_link(:namespace => namespace, :object => object, :context => context) %>
-<% else %>
-  <%= add_medium_link(:object => object, :context => context) %>
-<% end %>
-</p>
+<li>
+  <% if namespace %>
+    <%= add_medium_link(:namespace => namespace, :object => object, :context => context) %>
+  <% else %>
+    <%= add_medium_link(:object => object, :context => context) %>
+  <% end %>
+</li>
 
 <!-- </span> -->
 

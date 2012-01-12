@@ -6,7 +6,7 @@
   <%= formtastic.input context, :as => :file %>
 <%- else %>
   <span id="<%= generate_uid(:object => object, :context => context) %>">
-    <%= label_tag "#{klass}[#{context}]#{'[]' if multiple}", 
+    <%= label_tag "#{klass}[#{context}]#{'[]' if multiple}",
       t(context, :scope => [:activerecord, :attributes, klass]) %>
     <%= file_field_tag "#{klass}[#{context}]#{'[]' if multiple}" %>
   </span>
