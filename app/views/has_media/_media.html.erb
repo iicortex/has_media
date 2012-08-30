@@ -4,14 +4,14 @@
 
 <%- media.each do |medium| %>
   <%- unless medium.nil? %>
-    <div class="<%= medium.class.to_s.underscore %>" id="<%= generate_uid(:medium => medium) %>">
+    <li class="<%= medium.class.to_s.underscore %>" id="<%= generate_uid(:medium => medium) %>">
       <%= link_to medium.original_file_uri, medium.original_file_uri %>
 
       <%- if multiple and !readonly %>
-        <%= remove_medium_link :object   => object, 
-          :context  => context, 
+        <%= remove_medium_link :object   => object,
+          :context  => context,
           :medium   => medium %>
       <%- end %>
-    </div>
+    </li>
   <%- end %>
 <%- end %>
