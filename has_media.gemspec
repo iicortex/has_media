@@ -123,8 +123,8 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<jeweler>, [">= 1.5"])
       s.add_development_dependency(%q<rspec>, ["> 2.0.0"])
       s.add_runtime_dependency(%q<carrierwave>, ["> 0.5"])
-      s.add_runtime_dependency(%q<activerecord>, ["> 3.2.9"])
-      s.add_runtime_dependency(%q<activesupport>, ["> 3.2.9"])
+      s.add_runtime_dependency(%q<activerecord>, ["> 3.2.8"])
+      s.add_runtime_dependency(%q<activesupport>, ["> 3.2.8"])
       s.add_runtime_dependency(%q<mime-types>, ["> 1.16"])
     else
       s.add_dependency(%q<rails>, [">= 3.1"])
@@ -136,8 +136,8 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<jeweler>, [">= 1.5"])
       s.add_dependency(%q<rspec>, ["> 2.0.0"])
       s.add_dependency(%q<carrierwave>, ["> 0.5"])
-      s.add_dependency(%q<activerecord>, ["> 3.2.9"])
-      s.add_dependency(%q<activesupport>, ["> 3.2.9"])
+      s.add_dependency(%q<activerecord>, ["> 3.2.8"])
+      s.add_dependency(%q<activesupport>, ["> 3.2.8"])
       s.add_dependency(%q<mime-types>, ["> 1.16"])
     end
   else
@@ -150,8 +150,8 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<jeweler>, [">= 1.5"])
     s.add_dependency(%q<rspec>, ["> 2.0.0"])
     s.add_dependency(%q<carrierwave>, ["> 0.5"])
-    s.add_dependency(%q<activerecord>, ["> 3.2.9"])
-    s.add_dependency(%q<activesupport>, ["> 3.2.9"])
+    s.add_dependency(%q<activerecord>, ["> 3.2.8])
+    s.add_dependency(%q<activesupport>, ["> 3.2.8"])
     s.add_dependency(%q<mime-types>, ["> 1.16"])
   end
 end
