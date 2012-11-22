@@ -49,6 +49,7 @@ class Medium < ActiveRecord::Base
       medium.filename = HasMedia.sanitize_file_name(File.basename(value.path))
     end
     medium.file = value
+    medium.size = value.size
     medium.content_type = mime_type
     medium.context = context
     medium.encode_status = (encode == "false" ? NO_ENCODING : ENCODE_WAIT)
