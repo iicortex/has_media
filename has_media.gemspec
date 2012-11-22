@@ -150,7 +150,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<jeweler>, [">= 1.5"])
     s.add_dependency(%q<rspec>, ["> 2.0.0"])
     s.add_dependency(%q<carrierwave>, ["> 0.5"])
-    s.add_dependency(%q<activerecord>, ["> 3.2.8])
+    s.add_dependency(%q<activerecord>, ["> 3.2.8"])
     s.add_dependency(%q<activesupport>, ["> 3.2.8"])
     s.add_dependency(%q<mime-types>, ["> 1.16"])
   end
